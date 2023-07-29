@@ -15,12 +15,6 @@ odom_frame: odom
 base_link_frame: base_link
 world_frame: odom
 
-# x, y, z
-# roll, pitch, yaw
-# vx, vy, vz
-# vroll, vpitch, vyaw
-# ax, ay, az.
-
 odom0: /odom
 odom0_config: [false, false, false,
                 false, false, false,
@@ -31,7 +25,7 @@ odom0_queue_size: 3
 odom0_rejection_threshold: 5
 odom0_nodelay: false
 
-imu0: /os1_cloud_node/imu
+imu0: /os1_cloud_node/imu/data
 imu0_config: [false, false, false,
               true,  true,  false,
               false, false, false,

@@ -4,33 +4,32 @@
     pkg="imu_filter_madgwick"
     type="imu_filter_node">
     <rosparam command="load" file="$(find raptor_slam)/config/imu/imu_filter_node.yaml" />
-    <remap from="imu/data" to="/os1_cloud_node/imu"/>
+    <remap from="imu/data_raw" to="/os1_cloud_node/imu/data_raw"/>
+    <!-- <remap from="imu/data" to="imu/data/filtred"/> -->
   </node>
-
-  
+ 
+  <rosparam command="load" file="$(find raptor_slam)/config/odometry/dual_ekf_navsat_example.yaml" />
 
   <node name="ekf_se_odom"
     pkg="robot_localization"
     type="ekf_localization_node"
     clear_params="true">
-    <rosparam command="load"
-    file="$(find raptor_slam)/config/odometry/ekf_template.yaml" />
+    <remap from="odometry/filtered" to="odometry/filtered/local"/>
   </node>
 
-  <!-- <node name="ekf_se_map"
+  <node name="ekf_se_map"
     pkg="robot_localization"
     type="ekf_localization_node"
     clear_params="true">
-    <remap from="odometry/filtered" to="odometry/filtered_map"/>
+    <remap from="odometry/filtered" to="odometry/filtered/global"/>
   </node>
 
-  <node name="navsat_transform"
+ <!-- <node name="navsat_transform"
     pkg="robot_localization"
     type="navsat_transform_node"
     clear_params="true">
-    <remap from="odometry/filtered" to="odometry/filtered_map"/>
+    <remap from="odometry/filtered" to="odometry/filtered/global"/>
+     <remap from="/imu/data" to="/imu/data/filtred"/> 
   </node> -->
-
-  <!-- <remap from="imu/data" to="/os1_cloud_node/imu"/> -->
 
 </launch>

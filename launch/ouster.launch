@@ -12,8 +12,8 @@
     -->
 
     <!-- Required: -->
-    <!-- <arg name="os1_hostname"/>
-    <arg name="os1_udp_dest"/> -->
+    <arg name="os1_hostname"/>
+    <arg name="os1_udp_dest"/>
 
     <arg name="frame_id" default="os1_sensor"/>
     <arg name="rtabmapviz"    default="true"/>
